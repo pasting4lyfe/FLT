@@ -1,0 +1,107 @@
+[Version]
+Signature   = "$Windows NT$"
+Class       = Sample
+ClassGuid   = {78A1C341-4539-11d3-B88D-00C04FAD5171}
+Provider    = %ProviderName%
+DriverVer   = 10/02/2025,1.0.0.0
+CatalogFile = %DriverName%.cat
+PnpLockdown = 1
+
+[Manufacturer]
+%ProviderName% = Models,NT$ARCH$
+
+[Models.NT$ARCH$]
+%DeviceName% = DriverInstall, ROOT\NIMBUS_SVC
+
+[SourceDisksNames]
+1 = %SourceDisk%
+
+[SourceDisksFiles]
+mainstream.sys = 1
+
+[DestinationDirs]
+DefaultDestDir = 12 ; %windir%\system32\drivers
+
+; =====================
+; Class Installer Setup
+; =====================
+[ClassInstall32]
+AddReg = Class.Registry
+
+[Class.Registry]
+HKR,,,,%ClassName%
+HKR,,Icon,, "-14"
+
+; =====================
+; Driver Installation
+; =====================
+[DriverInstall]
+CopyFiles = Driver.CopyFiles
+AddReg    = Driver.Registry
+
+[DriverInstall.HW]
+AddReg = Driver.Registry
+
+[DriverInstall.Services]
+AddService = %DriverName%, %SERVICE_INSTALL%, Service
+
+[Driver.CopyFiles]
+mainstream.sys
+
+; =====================
+; Registry Settings
+; =====================
+[Driver.Registry]
+HKR,,LocationInformationOverride,,"This Machine"
+HKR,,DeviceType,%REG_DWORD%,%FILE_DEVICE_VENDOR%
+HKR,,DeviceCharacteristics,%REG_DWORD%,%FILE_DEVICE_SECURE_OPEN%
+HKR,,Security,,"D:P(A;CI;GA;;;BA)(A;CI;GA;;;SY)"
+
+; =====================
+; Service Definition
+; =====================
+[Service]
+DisplayName   = %DeviceName%
+ServiceType   = %SERVICE_KERNEL_DRIVER%
+StartType     = %SERVICE_DEMAND_START%
+ErrorControl  = %SERVICE_ERROR_IGNORE%
+ServiceBinary = %12%\mainstream.sys
+
+[Service.SW]
+AddReg = Service.Registry
+
+[Service.Registry]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,%SERVICE_EVENTS%
+
+; =====================
+; Strings Section
+; =====================
+[Strings]
+ProviderName = "Nimbus CTRL"
+DeviceName   = "Nimbus SVC"
+DriverName   = "mainstream"
+ClassName    = "Samples"
+InstallPath  = "NIMBUS_SVC"
+SourceDisk   = "Windows Diagnostic Drivers"
+
+REG_DWORD       = 0x10001
+REG_EXPAND_SZ   = 0x20000
+
+FILE_DEVICE_VENDOR      = 0x8888
+FILE_DEVICE_SECURE_OPEN = 0x100
+
+SERVICE_KERNEL_DRIVER = 0x1
+SERVICE_INSTALL       = 0x2
+SERVICE_EVENTS        = 0x7
+
+SERVICE_BOOT_START    = 0x0
+SERVICE_SYSTEM_START  = 0x1
+SERVICE_AUTO_START    = 0x2
+SERVICE_DEMAND_START  = 0x3
+SERVICE_DISABLED      = 0x4
+
+SERVICE_ERROR_IGNORE   = 0x0
+SERVICE_ERROR_NORMAL   = 0x1
+SERVICE_ERROR_SEVERE   = 0x2
+SERVICE_ERROR_CRITICAL = 0x3
