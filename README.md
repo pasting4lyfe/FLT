@@ -1,3 +1,3 @@
-System's Watchdog using a Telemetry driver and a minifilter
+系统看门狗使用遥测驱动程序和微型过滤器
 
--Added Extensive Debugging, will remove once ts stable 😄😄😄😄
+添加了大量调试，一旦测试稳定就会移除 😄😄😄😄
