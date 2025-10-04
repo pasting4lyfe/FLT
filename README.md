@@ -1,3 +1,3 @@
-系统看门狗使用遥测驱动程序和微型过滤器
-
-添加了大量调试，一旦测试稳定就会移除 😄😄😄😄
+Global Device Watchdog,
+intended to be a security Driver
+<img width="617" height="271" alt="image" src="https://github.com/user-attachments/assets/657752a4-dfa9-4546-90e1-e2a64b860f5f" />
