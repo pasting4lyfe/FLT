@@ -54,6 +54,30 @@
     <ClInclude Include="Callbacks\Callback_wizard.hxx">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Exported\Exported.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Definition\Headers.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Definition\Constants.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Definition\File.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Definition\PacketInclude.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Definition\WIN.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Definition\crt.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IAT\IAT.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="deployment\deployment.cxx">
@@ -84,6 +108,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Callbacks\wizard\Callback_wizard.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Exported\Exported.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IAT\IAT.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

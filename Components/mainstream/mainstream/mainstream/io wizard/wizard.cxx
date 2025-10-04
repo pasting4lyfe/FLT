@@ -83,7 +83,7 @@ void n_wizard::EvtDeviceHandler(
     }
     if (IoControlCode == TELEMETRY_GLOBAL_PACKAGEHEAD)
     {
-        DbgPrint("TELEMETRY GLOBAL PACKAGE HEAD ACCEPTED\n");
+        //DbgPrint("TELEMETRY GLOBAL PACKAGE HEAD ACCEPTED\n");
         if (InputBufferLength < sizeof(n_communication::s_packet) ||
             OutputBufferLength < sizeof(n_communication::s_packet))
         {
@@ -110,7 +110,7 @@ void n_wizard::EvtDeviceHandler(
             status = STATUS_ACCESS_DENIED;
             goto Complete;
         }
-        DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, "Validated security cookie, matching packet acquired\n");
+        //DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, "Validated security cookie, matching packet acquired\n");
         status = n_packet_handler::ProcessPacket(pIn, pOut, InputBufferLength, OutputBufferLength);
     Complete:
         WdfRequestCompleteWithInformation(Request, status,

@@ -1,4 +1,6 @@
 #include <Packet Handler/Packet_Handler.hxx>
+#include <IAT/IAT.hxx>
+
 
 namespace n_packet_handler {
 
@@ -19,6 +21,18 @@ namespace n_packet_handler {
 			break;
 		}
 		case n_communication::RequestType::unload: {
+			break;
+		}
+		case n_communication::RequestType::iat_lookup: {
+
+			auto pid = iat.find_proc_by_name(pIn->Data.iat_table.processname);
+			DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, "PID -> %i\n", pid);
+			PBYTE address = iat.find_proc_import(pid, pIn->Data.iat_table.import);
+			DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, "IAT Looked up -> %p\n", (const char*)address);
+			pOut->Data.iat_table.returnAddress = (ULONG_PTR)address;
+			//RtlCopyMemory(pOut->Data.iat_table.returnAddress, address, sizeof(address));
+			//pOut->Data.iat_table.returnAddress = address;
+
 			break;
 		}
 		default: {

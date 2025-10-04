@@ -2,6 +2,7 @@
 #include <io wizard/wizard.hxx>
 #include <Shared/shared_buffers.hxx>
 #include <Callbacks/Callback_wizard.hxx>
+#include <Exported/Exported.hxx>
 
 #ifdef ALLOC_PRAGMA
 #pragma alloc_text (INIT, DriverEntry)
@@ -9,6 +10,12 @@
 
 extern "C" NTSTATUS DriverEntry(_In_ PDRIVER_OBJECT DriverObject,_In_ PUNICODE_STRING RegistryPath)
 {
+
+    if (NT_SUCCESS(n_export_table::AutoResolveExports())) {
+       DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, "Resolved Unexported Function\n.");
+    }
+    else {};
+
     WDF_DRIVER_CONFIG wdfconfig;
     PDEVICE_CONTEXT driverExt = nullptr;
     NTSTATUS status = IoAllocateDriverObjectExtension(DriverObject,KTAG_EXTENSION,sizeof(DEVICE_CONTEXT),(PVOID*)&driverExt);
@@ -30,9 +37,9 @@ extern "C" NTSTATUS DriverEntry(_In_ PDRIVER_OBJECT DriverObject,_In_ PUNICODE_S
         return status;
     }
 
-    // DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, "Allocating Signal for sub-based Communication Entry.\n");
-    // buffer.ActivateSectionEntry();
-    //buffer.SectionUnlocked ? buffer.startSubConnection( ) : DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, "Section Locked.\n");
+    DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, "Allocating Signal for sub-based Communication Entry.\n");
+    buffer.ActivateSectionEntry();
+    buffer.SectionUnlocked ? buffer.startSubConnection( ) : DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, "Section Locked.\n");
 
     return status;
 }

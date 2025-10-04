@@ -118,3 +118,24 @@ auto cWizardComm::HelloDexterMorgan() -> bool {
     }
     //bay harbour gooner
 }
+
+
+auto cWizardComm::IATLookUp(const char* import, const char* processname) -> BYTE {
+    n_communication::s_packet pIn;
+    n_communication::s_packet pOut;
+    pIn.u_auth_cookie = n_communication::u_cookie;
+    pIn.type = n_communication::RequestType::iat_lookup;
+    pIn.RingRelated = FALSE;
+    pIn.Data.iat_table.import = import;
+    pIn.Data.iat_table.processname = processname;
+    bool success = SendRequest(pIn, pOut);
+    if (success) {
+        std::cout << "Returned IAT -> 0x" << std::hex << pOut.Data.iat_table.returnAddress << std::endl;
+        system("pause");
+        return TRUE;
+    }
+    else {
+        std::cout << "Failed to Io Control, Func -> IATLookUp " << std::endl;
+        return FALSE;
+    }
+}

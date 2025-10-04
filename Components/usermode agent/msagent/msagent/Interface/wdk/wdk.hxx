@@ -15,6 +15,7 @@ public://no default, :(
     void Close();             
     void PrintDeviceHandle();
     bool HelloDexterMorgan();
+    BYTE IATLookUp(const char* import, const char* processname);
     bool SendRequest(_In_ const n_communication::packet& rfcInPacket,_Out_ n_communication::packet& rfcOutPacket,_In_ DWORD dwTimeoutMs = 5000);
     DWORD GetLastErrorValue() const noexcept { return m_dwLastError; }
     bool IsOpen() const noexcept { return (m_hDevice != INVALID_HANDLE_VALUE && m_hDevice != nullptr); }

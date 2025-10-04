@@ -63,6 +63,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -95,7 +96,8 @@
     </DriverSign>
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <ShowIncludes>true</ShowIncludes>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
@@ -117,7 +119,15 @@
   <ItemGroup>
     <ClInclude Include="Callbacks\Callback_wizard.hxx" />
     <ClInclude Include="Callbacks\PsSetLoadImageNotifyRoutine\psSetLoadImageNotifyRoutine.hxx" />
+    <ClInclude Include="Definition\Constants.hxx" />
+    <ClInclude Include="Definition\crt.hxx" />
+    <ClInclude Include="Definition\File.hxx" />
+    <ClInclude Include="Definition\Headers.hxx" />
+    <ClInclude Include="Definition\PacketInclude.hxx" />
+    <ClInclude Include="Definition\WIN.hxx" />
     <ClInclude Include="deployment\ioctl_settings.hxx" />
+    <ClInclude Include="Exported\Exported.hxx" />
+    <ClInclude Include="IAT\IAT.hxx" />
     <ClInclude Include="io wizard\wizard.hxx" />
     <ClInclude Include="Packet Handler\Packet_Handler.hxx" />
     <ClInclude Include="Shared\CSRRCR\consumer_reciever.hxx" />
@@ -131,6 +141,8 @@
     <ClCompile Include="Callbacks\wizard\Callback_wizard.cxx" />
     <ClCompile Include="deployment\deployment.cxx" />
     <ClCompile Include="deployment\ioctl_settings.cpp" />
+    <ClCompile Include="Exported\Exported.cxx" />
+    <ClCompile Include="IAT\IAT.cxx" />
     <ClCompile Include="io wizard\wizard.cxx" />
     <ClCompile Include="Packet Handler\Packet_Handler.cxx" />
     <ClCompile Include="Shared\CSRRCR\consumer_reciever.cxx" />
@@ -140,5 +152,6 @@
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
   </ImportGroup>
 </Project>

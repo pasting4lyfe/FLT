@@ -1,0 +1,3 @@
+#pragma once
+#define IMAGE_FILE_DLL 0x2000
+#define IMAGE_FILE_EXECUTABLE_IMAGE 0x0002

@@ -1,0 +1,15 @@
+#pragma once
+#define IMAGE_SUBSYSTEM_UNKNOWN                 0
+#define IMAGE_SUBSYSTEM_NATIVE                  1
+#define IMAGE_SUBSYSTEM_WINDOWS_GUI             2
+#define IMAGE_SUBSYSTEM_WINDOWS_CUI             3
+#define IMAGE_SUBSYSTEM_OS2_CUI                 5
+#define IMAGE_SUBSYSTEM_POSIX_CUI               7
+#define IMAGE_SUBSYSTEM_WINDOWS_CE_GUI          9
+#define IMAGE_SUBSYSTEM_EFI_APPLICATION         10
+#define IMAGE_SUBSYSTEM_EFI_BOOT_SERVICE_DRIVER 11
+#define IMAGE_SUBSYSTEM_EFI_RUNTIME_DRIVER      12
+#define IMAGE_SUBSYSTEM_EFI_ROM                 13
+#define IMAGE_SUBSYSTEM_XBOX                     14
+#define IMAGE_SUBSYSTEM_WINDOWS_BOOT_APPLICATION 16
+
