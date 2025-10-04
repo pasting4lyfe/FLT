@@ -3,7 +3,6 @@
 #include <ntintsafe.h>
 //device io control global packages
 //shared between um agent and mainstream drv
-//nigga
 namespace n_communication {
 
 	inline ULONG u_cookie = 0xA84Fa;
@@ -29,3 +28,4 @@ namespace n_communication {
 
 
 }
+
