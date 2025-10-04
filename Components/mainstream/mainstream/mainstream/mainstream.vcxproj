@@ -115,6 +115,7 @@
     <FilesToPackage Include="$(TargetPath)" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Callbacks\Callback_wizard.hxx" />
     <ClInclude Include="Callbacks\PsSetLoadImageNotifyRoutine\psSetLoadImageNotifyRoutine.hxx" />
     <ClInclude Include="deployment\ioctl_settings.hxx" />
     <ClInclude Include="io wizard\wizard.hxx" />
@@ -123,9 +124,11 @@
     <ClInclude Include="Shared\PacketIndex.hxx" />
     <ClInclude Include="Shared\shared_buffers.hxx" />
     <ClInclude Include="Shared_Packet.hxx" />
+    <ClInclude Include="unload agent\UnloadAgent.hxx" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Callbacks\PsSetLoadImageNotifyRoutine\PsSetLoadImageNotifyRoutine.cxx" />
+    <ClCompile Include="Callbacks\wizard\Callback_wizard.cxx" />
     <ClCompile Include="deployment\deployment.cxx" />
     <ClCompile Include="deployment\ioctl_settings.cpp" />
     <ClCompile Include="io wizard\wizard.cxx" />
@@ -133,6 +136,7 @@
     <ClCompile Include="Shared\CSRRCR\consumer_reciever.cxx" />
     <ClCompile Include="Shared\Entry\CreateEntry.cxx" />
     <ClCompile Include="Shared\Entry\shared_buffers.cxx" />
+    <ClCompile Include="unload agent\UnloadAgent.cxx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

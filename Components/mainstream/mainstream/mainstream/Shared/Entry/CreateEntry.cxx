@@ -42,10 +42,13 @@ void s_shared::CleanUp()
     if (buffer.gSharedView) {
         ZwUnmapViewOfSection(NtCurrentProcess(), buffer.gSharedView);
         buffer.gSharedView = NULL;
+        DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, "Unampped Memory Sections.\n");
     }
     if (buffer.gSectionHandle) {
         ZwClose(buffer.gSectionHandle);
         buffer.gSectionHandle = NULL;
+        DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, "Cleared Section Handle.\n");
     }
     buffer.gCtrl = NULL;
+    DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, "NULLED CTRL.\n");
 }

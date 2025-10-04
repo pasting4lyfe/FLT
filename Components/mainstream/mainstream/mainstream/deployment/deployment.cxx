@@ -1,6 +1,7 @@
 #include <deployment/ioctl_settings.hxx>
 #include <io wizard/wizard.hxx>
 #include <Shared/shared_buffers.hxx>
+#include <Callbacks/Callback_wizard.hxx>
 
 #ifdef ALLOC_PRAGMA
 #pragma alloc_text (INIT, DriverEntry)
@@ -22,6 +23,13 @@ extern "C" NTSTATUS DriverEntry(_In_ PDRIVER_OBJECT DriverObject,_In_ PUNICODE_S
         DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_ERROR_LEVEL,"WdfDriverCreate failed: 0x%X\n", status);
         return status;}
     DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, "Created WDF Driver\n");
+
+    status = n_callback_wizard::InstallCallback();
+    if (status) {
+        DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, "Callbacks Installed.\n");
+        return status;
+    }
+
     // DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, "Allocating Signal for sub-based Communication Entry.\n");
     // buffer.ActivateSectionEntry();
     //buffer.SectionUnlocked ? buffer.startSubConnection( ) : DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, "Section Locked.\n");

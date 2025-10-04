@@ -48,6 +48,12 @@
     <ClInclude Include="Packet Handler\Packet_Handler.hxx">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="unload agent\UnloadAgent.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Callbacks\Callback_wizard.hxx">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="deployment\deployment.cxx">
@@ -72,6 +78,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Packet Handler\Packet_Handler.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="unload agent\UnloadAgent.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Callbacks\wizard\Callback_wizard.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

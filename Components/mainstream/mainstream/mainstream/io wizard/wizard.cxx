@@ -61,6 +61,7 @@ VOID n_wizard::EvtDeviceContextCleanup(_In_ WDFOBJECT DeviceObject) {
 
 #include <Shared/shared_buffers.hxx>
 #include <Shared_Packet.hxx>
+#include <unload agent/UnloadAgent.hxx>
 
 void n_wizard::EvtDeviceHandler(
     _In_ WDFQUEUE Queue,
@@ -125,9 +126,5 @@ void n_wizard::EvtDeviceHandler(
 
 VOID n_wizard::EvtDriverUnload(_In_ WDFDRIVER Driver)
 {
-   // buffer.CleanUp();
-    PDRIVER_OBJECT driverObject = WdfDriverWdmGetDriverObject(Driver);
-    PDEVICE_CONTEXT driverExt = GetDriverExtension(driverObject);
-    if (!driverExt) return;
-    DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, "Unload Routine Completed\n");
+    n_unload_agent::UnloadRoutine(Driver);
 }
